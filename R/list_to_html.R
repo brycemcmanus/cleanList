@@ -11,8 +11,6 @@ to_html_table <- function(x, rownames = FALSE) {
   #' @return Returns an HTML table or (if the object is not a matrix or
   #'   dataframe) the orignal object unmodified.
   #'
-  #'@example
-  #'
   #'
 
   if (is.matrix(x)) {
@@ -32,18 +30,16 @@ to_html_table <- function(x, rownames = FALSE) {
   } else x
 }
 
-list_html <- fuunction(lst) {
-
+list_html <- function(lst) {
   #' Create an HTML list item
   #'
-  #' Converts a list object to an HTML list item (<li>). If an object is a
+  #' Converts a list object to an HTML list item. If an object is a
   #' dataframe or matrix it is convert to an HTML table first.
   #'
   #' @param lst A list object.
   #' @importFrom shiny tags
   #' @export
   #' @return Returns an HTML string of a list item.
-  #' @example
   #'
   #'
 
@@ -73,8 +69,6 @@ list_html_r <- function(lst) {
   #' @importFrom shiny tags
   #' @return Returns a list of HTML list item strings.
   #'
-  #' @example
-  #'
   #'
 
   nms <- names(lst) # what if no names?
@@ -97,7 +91,7 @@ list_to_html <- function(lst) {
 
   #' Convert list to HTML
   #'
-  #' Converts a list to an un-ordered HTML list (<ul>).
+  #' Converts a list to an un-ordered HTML list.
   #'
   #' @param lst A list object.
   #' @importFrom shiny tags
@@ -110,6 +104,8 @@ list_to_html <- function(lst) {
   #'             C = list(data.frame(A = 1:10, b = letters[1:10])))
   #'
   #' list_to_html(lst)
+  #'
+  #'
   #'
 
   if (rlang::is_bare_list(lst)) {
