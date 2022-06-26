@@ -37,7 +37,7 @@ is_leaf_table <- function(x) {
   dep <- purrr::vec_depth(x)
   len <- list_length(x)
 
-  if (length(len) == 1) {
+  if (length(len) == 1) { #
 
     len <- c(len, len)
   }
@@ -174,7 +174,7 @@ list_to_df <- function(lst) {
 
     if (is_leaf_table(lst)) as.data.frame(lst)
 
-    else lapply(lst, list_df)
+    else lapply(lst, list_to_df)
 
   } else lst
 }
@@ -194,7 +194,7 @@ clean_list <- function(lst, format = FALSE) {
 #' @importFrom rlang is_bare_list
 #' @return Returns a simplified list. It is possible that \code{lst} will be returned
 #'   unmodified if no lame lists or leaf tables are found.
-#' @example
+#' @examples
 #' clean_list(list(A = 1:10, B = 11:20))
 #'
 #' clean_list(list(A = list(X = 1:10, Y = letters[1:10])))
@@ -217,12 +217,12 @@ clean_list <- function(lst, format = FALSE) {
 
       } else {
 
-        out <- list_df(out)
+        out <- list_to_df(out)
       }
 
     } else {
 
-      out <- list_df(out)
+      out <- list_to_df(out)
     }
 
   } else out <- lst
